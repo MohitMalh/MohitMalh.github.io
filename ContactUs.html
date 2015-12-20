@@ -1,0 +1,298 @@
+<?php
+session_start();
+?>
+<!DOCTYPE html>
+<html ng-app lang="eng">
+<head>
+	<title>Tour 701 Project</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src="http://code.jquery.com/jquery-2.1.3.js"></script>
+	<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<link rel="stylesheet" href="jquery-ui.css" type="text/css">
+	<link rel="stylesheet" href="jquery-ui.min.css" type="text/css">
+	<link rel="stylesheet" href="jquery-ui.structure.css" type="text/css">
+	<link rel="stylesheet" href="jquery-ui.structure.min.css" type="text/css">
+	<link rel="stylesheet" href="jquery-ui.theme.css" type="text/css">
+	<link rel="stylesheet" href="jquery-ui.theme.min.css" type="text/css">
+	<script type="text/javascript" src="login.js"></script>
+	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+	<script src="js/angular10.js"></script>
+	<script src="connect.js"></script>
+	<script>
+	function ContactController($scope)
+	{
+		$scope.first;
+		$scope.last;
+		$scope.email;
+		$scope.mychoice;
+		$scope.comment;
+		
+	}
+	$(document).ready(function()
+			{
+				$(".logout").click(function()
+				{
+					window.location="logout.php"
+		
+			});
+
+			
+	
+		});
+	$(document).ready(function()
+	{
+		$(".logout").click(function()
+		{
+			window.location="logout.php"
+	
+		});
+		$(".address").hide();
+	});
+	</script>
+	
+	<style>
+	.logo{width:120px; height:120px;}
+	
+	#logoheading{font-family:"Times New Roman","Times","Serif";font-weight:bold;color:blue;font-size:3em;}
+	#submit{background-image:url(button.png);width:110px;height:45px;display:visible;}
+	#submitbut{padding-left:70px;}
+	.ui-dialog .ui-state-error{padding: .3em;}
+	.validateTips{border: 1px solid transparent;padding: 0.3em;}
+	#myBanner{position:relative;alignment-adjust: center;}
+	#myBanner img{display:none;height:100%;width:100%;}
+	#myBanner img.active{display:block;}
+	svg{border: 2px solid;}
+	#eat{background-image:url(salmon.jpg);}
+	#drink{background-image:url(cocktail.jpg);}
+	#tour{background-image:url(tour.jpg);}
+	#museum{background-image:url(museum.jpg);}
+	</style>
+	<script>
+	function slider()
+	{
+		var $active = $('#myBanner .active');
+		var $next =($('#myBanner .active').next().length > 0)?$('#myBanner .active').next():$('#myBanner img:first');
+		$active.fadeOut(function()
+		{
+			$active.removeClass('active');
+			$next.fadeIn().addClass('active');
+		});
+	}
+	$(document).ready(function()
+	{
+		setInterval('slider()', 5000);
+	});
+	</script>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-4">
+				<img class="logo" src="logo_front.png">
+			</div>
+			<div class="col-md-4">
+				<h1 id="logoheading">BOSTON TRAVELS</h1>
+			</div>
+			<div class="col-md-2" style="padding-top:20px">
+				<h4>
+				<?php
+				 if (isset($_SESSION['email']))
+					{
+					echo $_SESSION['email'];?>
+					<script type="text/javascript">
+					$(document).ready(function()
+					{
+						
+						$(".signup").hide();
+						$(".loggedin").show();
+					});
+					</script><?php
+				}
+				else
+				{
+					echo"HELLO GUEST";
+				}
+				?> 
+			</h4>
+			</div>
+			<div class="col-md-1">
+				<br><button  id="submit"></button>
+				<input type="image" src="logout.png" class="logout" alt="logout" name="logout"  style="display:none;">
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-md-12" id="myBanner">
+				<img src="Boston_Banner.jpg" class="active" alt="Boston_banner_travel">
+				<img src="Boston_fall1.jpg" alt="Boston_banner_travel">
+				<img src="Boston_fall.jpg" alt="Boston_banner_travel">						
+				<img src="boston_downtown.jpg" alt="Boston_banner_travel">
+				<img src="Boston_Harbor_islands.jpg" alt="Boston_banner_travel">
+				<img src="Boston_South_end.jpg" alt="Boston_banner_travel">
+			</div>
+		</div>
+		<nav class="navbar navbar-inverse">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="index.html">Home</a></li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Tours<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="Eat.html">Restaurants And Pubs</a></li>
+							<li><a href="Museum.html">Museum</a></li>
+			            	<li><a href="Tours.html">Tours</a></li>
+						</ul>
+					</li>
+					<li><a href="SignUp.html">Sign-Up</a></li>
+			        <li><a href="ContactUs.html">Contact Us</a></li>
+					<li><a href="about.html">About</a></li>
+				</ul>
+			</div>
+		</nav>
+		<div class="row">
+			  <div class="col-md-2"></div>
+			  <div class="col-md-1">
+				  <img src="eat.png" alt="food">
+				  <br>
+				  <h3>&nbsp; EAT</h3>
+			  </div>
+			  <div class="col-md-1"></div>
+			  <div class="col-md-1">
+				  <img src="tours.png" alt="Tours">
+				  <br>
+				  <h3>TOURS</h3>
+			  </div>
+			  <div class="col-md-1"></div>
+			  <div class="col-md-1">
+				  <img src="museum.png" alt="Museum">
+				  <br>
+				  <h3>MUSEUM</h3>
+			  </div>
+			  <div class="col-md-1"></div>
+			  <div class="col-md-1">
+				  <img src="beer-logo.png" alt="drink" >
+				  <br>
+				  <h3>DRINK</h3>
+			  </div>
+		  </div>
+	  </div>
+<div class="container" ng-controller="ContactController">
+	  		  <div class="row" id="check2">
+	  			
+	  			  <div class="col-md-12">
+	  				  <div class="row">
+	  					  <div class="col-md-5"></div>
+	  					  <div class="col-md-5">
+	  						  <h3>CONTACT US</h3>
+	  					  </div>
+	  				  </div>
+					  <div  class="jumbotron">
+						  
+						  <fieldset>
+							  <form class="pure-form" id="feedbackform1">
+								  
+  								<label for="firstname">First Name</label>
+  								<input ng-model = "first" type="text" name="fname" id="firstname" placeholder="first name" size="30" required>
+  									<label for="lastname">Last Name</label>
+  									<input  ng-model = "last" type="text" name="lname" id="lastname" placeholder="last name" size="30" required value="<?php echo $_SESSION['email'];?>">
+  							
+				
+  		  						<label for="emal" >Enter your email</label>
+  		  						<input  ng-model = "email" type="text" name="eml" id="emal" placeholder="email address" size="30" required>
+  		  						<span id="check"></span>
+							<br>
+							<br>
+		  					<label for="satisfy">Please select</label>
+						<select id="satisfy" name="satisfy"  required ng-model = "mychoice" >
+							<option  ng-model = "mychoice" value="">select</option>
+						</select><span id="check1"></span>
+						
+		  						
+		  						<br>
+								<br>
+		  						<label for="comment" >Comment</label>
+		  						<textarea ng-model = "comment" class="form-control" rows="4" wrap="hard" name="comment" id="comment">
+		  						</textarea>
+		  						<br>
+		  						<br>
+		  						<br>
+		  						<input type="image" src="obcontact.png" alt="continue" id="continue">
+		  				
+					</div>
+				</div>
+	</div>
+	
+		  		<!--Message user will see after they have provided feedbak-->
+
+	  		  <div class="row"style="display:none;" id="review">
+	  			
+	  			  <div class="col-md-12">
+	  				  <div class="row">
+	  					  <div class="col-md-5"></div>
+	  					  <div class="col-md-5">
+	  						  <h3>PLEASE REVIEW YOUR DETAILS:</h3>
+	  					  </div>
+	  				  </div>
+					  <div  class="jumbotron">
+					  
+						  <h4>FIRST NAME</h4>{{first}}
+						  <h4>LAST NAME</h4>{{last}}
+						  <h4>EMAIL</h4>{{email}}
+						  <h4>ENQUIRY TYPE</h4>{{mychoice}}
+						  <h4>COMMENT</h4>{{comment}}
+						  <br>
+						  TO EDIT CLICK BACK BUTTON
+						  <br>
+						  <input type="image" src="back.gif" alt="back" id="back">
+						  <input type="image" src="connect.png" alt="submit" id="subfed">
+							</form>
+		  				</fieldset>
+					  </div>
+					</div>
+				</div>
+				
+	  			
+	  			  <div class="col-md-12" id="showcomment" style="display:none">
+	 
+					  <div  class="jumbotron">
+					  THANKS WE WILL GET BACK TO YOU SHORTLY
+						 
+					  </div>
+					</div>
+		
+		  </div>
+		  <div id="dialog-form" title="Log In">
+			  <p class="validateTips">All form fields are required.</p>
+			  <form>
+				  <fieldset>
+					  <label for="email">EmailId</label><br>
+					  <input type="text" name="eml" id="email" class="text ui-widget-content ui-corner-all">
+					  <br>
+					  <br>
+					  <label for="password">Password</label>
+					  <br>
+					  <input type="password" name="password" id="password" class="text ui-widget-content ui-corner-all">
+					  <!-- Allow form submission with keyboard without duplicating the dialog button -->
+					  <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+				  </fieldset>
+			  </form>
+		  </div>
+		  
+  </body>
+  </html>
+		  
