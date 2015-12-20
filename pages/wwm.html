@@ -1,0 +1,53 @@
+<script>
+ $(document).ready(function() 
+ {
+ 	var firstphoto = 0;
+	var Width = 400;
+	var photos = $('.photo');
+	var number = photos.length;
+	var timeinterval;
+	var time = 3000;
+	timeinterval = setInterval(photochange, time);
+	photos.wrapAll('<div id="frameHolder"></div>')
+	photos.css({ 'float' : 'left' });
+	$('#frameHolder').css('width', Width * number);
+	function photochange()
+	{
+		if(firstphoto == number - 1) 
+		{
+	  		firstphoto= 0;
+	  	} 
+	  	else
+	  	{
+	  		firstphoto++;
+	  	}
+	  	photomove();
+	}
+	function photomove() 
+	{
+		$('#frameHolder')
+		.animate({'marginLeft' : Width*(-firstphoto)});
+	}
+
+});
+ </script>
+ <div class="col-md-6">
+ 	<div class="content2">
+ 	<div class="photo">
+ 		<img src="wwm1.jpg" id="museum1" class="img-responsive" class="img-rounded" alt="wwm" width="400" height="300">
+ 	</div>
+ 	<div class="photo">
+ 		<img src="wwm2.jpg" id="museum1" class="img-responsive" class="img-rounded" alt="wwm" width="400" height="300">
+ 	</div>
+ 	<div class="photo">
+ 		<img src="wwm3.jpeg" id="museum1" class="img-responsive" class="img-rounded" alt="wwm" width="400" height="300">
+ 	</div>
+ 	<div class="photo">
+ 		<img src="wwm4.jpg" id="museum1" class="img-responsive" class="img-rounded" alt="wwm" width="400" height="300">
+ 	</div>
+ </div>
+</div>
+<div class="col-md-6">
+  <p>{{message}}</p>
+
+  </div>
