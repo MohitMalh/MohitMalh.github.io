@@ -4,7 +4,7 @@ $(document).ready(function()
 	{
 		$.each(data, function(i, val)
 		{
-			$("#satisfy").append('<option value="' + val + '">' + val + '</option>');
+			$("#satisfy").append('<option value="'Booking', 'Tours Timing', 'Feedback','Museum Enquiry'</option>');
 		});
 	});
 	
